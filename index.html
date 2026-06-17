@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskmanager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-200">
+    <h1 class="bg-blue-500 p-4 text-2xl font-bold"  >Task Manager</h1>
+    <form id="new-task-form" >
+<input type="text" id="task-title" placeholder= "Tast title">
+<textarea  id="task-description" placeholder="Description(optional)"></textarea>
+<button type="submit">Add task</button>
+    </form>
+
+<p id="form-error" class ="hidden text-red-600" ></p>
+
+<ul id="task-list"></ul>
+
+<p id="empty-state" class="hidden">No task-list Yet</p>
+
+
+
+<script src="storage.js"></script>
+<script src="taskActions.js"></script>
+<script src="ui.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
