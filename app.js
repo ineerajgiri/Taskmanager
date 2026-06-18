@@ -4,6 +4,8 @@ const descInput = document.getElementById('task-description');
 const listContainer = document.getElementById('task-list');
 
 
+let currentEditId = null;
+
 document.addEventListener('DOMContentLoaded',()=>{
     renderTasks();
 });
@@ -19,14 +21,23 @@ alert('Please Enter a Task Title');
 return ;
 }
 
-create(title,description);
+if(currentEditId !==null){
 
+updateTasks(currentEditId,title, description);
+
+currentEditId= null;
+taskform.querySelector('button[type="submit"]').textContent='Add Task';
+
+}else{
+
+create(title,description);
+}
 titleInput.value='';
 descInput.value='';
 
 
 renderTasks();
-})
+});
 
 listContainer.addEventListener('click',(e)=>{
 
@@ -45,5 +56,29 @@ else if(action ==='complete'){
     markComplete(id);
     renderTasks();
 }
+else if(action ==='duplicate'){
+    duplicateTasks(id);
+    renderTasks();
+}
+else if(action === 'edit'){
+const tasks = getTasks();
+const taskToEdit = tasks.find(t=> t.id === id);
+
+if(taskToEdit){
+
+titleInput.value = taskToEdit.title;
+descInput.value = taskToEdit.description;
+
+currentEditId = id;
+
+taskform.querySelector('button[type="submit"]').textContent= 'Update Task';
+
+window.scrollTo({top:0,behavior:'smooth'});
+
+}
+
+
+}
+
 
 });

@@ -43,3 +43,41 @@ saveTasks(updateTasks);
 return updateTasks;
 
 }
+
+function duplicateTasks(id){
+const tasks = getTasks();
+
+const originalTask = tasks.find(task => task.id===id);
+
+if(!originalTask) return tasks;
+
+const dupplicateTask=  {
+    id:generateId(),
+    title: `${originalTask.title} (copy)`,
+    description: originalTask.description,
+    createdAt: new Date().toISOString(),
+    isCompleted: false
+};
+tasks.unshift(dupplicateTask);
+saveTasks(tasks);
+return tasks;
+
+}
+
+function updateTasks(id, newTitle, newDescription){
+
+    const tasks = getTasks();
+     const updatedTask= tasks.map(task =>{
+if(task.id===id ){
+    return{
+        ...task,
+        title: newTitle.trim(),
+        description: newDescription.trim()
+    };
+}
+return task;
+     });
+     saveTasks(updatedTask);
+     return updatedTask;
+
+}

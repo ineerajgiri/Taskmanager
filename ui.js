@@ -46,6 +46,14 @@ ${buttonText}
 Delete
 </button>
 
+<button data-action="duplicate" data-id="${t.id}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm font-medium transition">
+    Duplicate
+</button>
+
+<button data-action="edit" data-id="${t.id}" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 text-sm font-medium transition">
+    Edit
+</button>
+
 </div>
   </li>
   `;
