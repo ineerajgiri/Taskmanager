@@ -1,5 +1,5 @@
 
-import {getTasks,saveTasks} from '/.storage.js';
+// import {getTasks,saveTasks} from '/.storage.js';
 
 function generateId(){
 return Date.now().toString(36) + Math.random().toString(36).slice(2,9);
